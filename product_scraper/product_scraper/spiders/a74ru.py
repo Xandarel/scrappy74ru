@@ -11,9 +11,10 @@ class A74ruSpider(scrapy.Spider):
     def parse(self, response):
         print("procesing: " + response.url)
 
-        # LHcp - воскресенье
+        # LHcp - Воскресенье
         # LJef - Понедельник
-        urls = response.xpath("//div[@class='LJef']/div/article/a/@href").extract()
+        # LRed - Вторник
+        urls = response.xpath("//div[@class='LRed']/div/article/a/@href").extract()
         # print(urls)
         count = 0
         for url in urls:
@@ -25,8 +26,8 @@ class A74ruSpider(scrapy.Spider):
                 break
 
     def get_text(self, response):
-        title = response.xpath("//div[@class='F-ad5']/h2/span/text()").extract_first()
-        text = response.xpath("//div[@class='BThz']/div/div/div/div/p/text()").extract()
+        title = response.xpath("//div[@class='F1act']/h2/span/text()").extract_first()
+        text = response.xpath("//div[@class='BPh9']/div/div/div/div/p/text()").extract()
         full_text = ' '.join(text)
 
         yield {'url': response.url,
