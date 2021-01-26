@@ -14,7 +14,7 @@ class A74ruSpider(scrapy.Spider):
         # LHcp - Воскресенье
         # LJef - Понедельник
         # LRed - Вторник
-        urls = response.xpath("//div[@class='LRed']/div/article/a/@href").extract()
+        urls = response.xpath("//div[@class='LFct']/div/article/a/@href").extract()
         # print(urls)
         count = 0
         for url in urls:
@@ -26,11 +26,11 @@ class A74ruSpider(scrapy.Spider):
                 break
 
     def get_text(self, response):
-        title = response.xpath("//div[@class='F1act']/h2/span/text()").extract_first()
-        text = response.xpath("//div[@class='BPh9']/div/div/div/div/p/text()").extract()
-        full_text = ' '.join(text)
+        title = response.xpath("//div[@class='D1xh']/h2/span/text()").extract_first()
+        text = response.xpath("//div[@class='BJgr']/div/div/div/div/p//text()").extract()
+        # full_text = ' '.join(text)
 
         yield {'url': response.url,
                'title': title,
-               'text': full_text}
+               'text': text}
 

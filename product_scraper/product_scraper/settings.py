@@ -15,6 +15,10 @@ NEWSPIDER_MODULE = 'product_scraper.spiders'
 FEED_FORMAT = "csv"
 FEED_URI = "74ru.csv"
 
+ITEM_PIPELINES = {
+    'product_scraper.pipelines.ProductScraperPipeline': 300,
+}
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'product_scraper (+http://www.yourdomain.com)'
 
